@@ -5,6 +5,7 @@
 
 using namespace std;
 
+
 Board::Board(){
 	
 	//creating figures (color = default)
