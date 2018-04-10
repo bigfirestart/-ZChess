@@ -122,6 +122,9 @@
     <ClInclude Include="Board.h" />
     <ClInclude Include="Primitives.h" />
   </ItemGroup>
+  <ItemGroup>
+    <Text Include="..\..\.gitignore" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
