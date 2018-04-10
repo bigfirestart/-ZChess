@@ -62,6 +62,7 @@ void Board::show() {
 		}
 		cout << endl;
 	}
+	cout << endl;
 }
 
 bool Board::Move(char l1, int n1, char l2, int n2) {
