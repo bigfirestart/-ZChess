@@ -14,10 +14,9 @@ public:
 		char stagemove;
 		char color;
 		vector vectors[10]; 
-		int xPos;
-		int yPos;
 
 	};
 	vector l = { 1,1 };
+	Primitives::Figure empty = { '_','_','_',{} };
 	
 };

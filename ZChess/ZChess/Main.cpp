@@ -8,8 +8,14 @@ using namespace std;
 
 int main() {
 	Board field;
+	while (true) {
 	field.show();
-
+	int n1, n2;
+	char l1, l2;
+	cin >> l1 >> n1 >> l2 >> n2;
+	field.Move(l1, n1, l2, n2);
+	field.cls();
+}
 	
 
 

@@ -1,4 +1,2 @@
-﻿  Board.cpp
-c:\users\bigfirestart\-zchess\zchess\zchess\board.cpp(13): warning C4101: horse: неиспользованная локальная переменная
-c:\users\bigfirestart\-zchess\zchess\zchess\board.cpp(12): warning C4101: bishop: неиспользованная локальная переменная
-  ZChess.vcxproj -> C:\Users\bigfirestart\-ZChess\ZChess\Debug\ZChess.exe
+﻿  Main.cpp
+  ZChess.vcxproj -> C:\Users\bigfirestart\Documents\GitHub\ZChess\ZChess\Debug\ZChess.exe
