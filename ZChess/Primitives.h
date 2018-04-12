@@ -17,6 +17,6 @@ public:
 
 	};
 	vector l = { 1,1 };
-	Primitives::Figure empty = { '_','_','_',{} };
+	Figure empty = { '_','_','_',{} };
 	
 };
