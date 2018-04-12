@@ -5,7 +5,6 @@
 
 using namespace std;
 
-
 Board::Board(){
 	
 	//creating figures (color = default)
@@ -14,7 +13,7 @@ Board::Board(){
 	Primitives::Figure king = { 'k','o',' ',{ { 1,1 },{ 1,0 },{ 0,1 },{ -1,1 },{ 1,-1 },{ 0,-1 },{ -1,0 },{ -1,-1 } } };
 	Primitives::Figure queen = { 'q','f',' ',{ { 1,1 },{ 1,0 },{ 0,1 },{ -1,1 },{ 1,-1 },{ 0,-1 },{ -1,0 },{ -1,-1 } }};
 	Primitives::Figure bishop = { 'b','f',' ',{ { 1,1 },{ -1,1 },{ 1,-1 },{ -1,-1 } }};
-	Primitives::Figure horse = { 'b','f',' ',{ { 2,1 },{ 1,2 },{ -1,2 },{ -2,1 },{ -2,-1 },{ -1,-2 },{ 1,-2 },{ 2,-1 } }};
+	Primitives::Figure horse = { 'h','f',' ',{ { 2,1 },{ 1,2 },{ -1,2 },{ -2,1 },{ -2,-1 },{ -1,-2 },{ 1,-2 },{ 2,-1 } }};
 	Primitives::Figure rook = { 'r','f',' ',{ { 1,0 },{ 0,1 },{ -1,0 },{ 0,-1 } } };
 	Primitives::Figure pawn = { 'p','d',' ',{ 1,0 } };
 
@@ -56,7 +55,7 @@ void Board::show() {
 	cout << endl;
 	for (int i = 0; i < 8; i++)
 	{
-		cout <<i + 1<<" ";
+		cout <<8-i<<" ";
 		for (int j = 0; j < 8; j++)
 		{
 			cout << matrix[i][j].name << "(" << matrix[i][j].color << ")";
@@ -87,7 +86,7 @@ bool Board::Move(char l1, int n1, char l2, int n2) {
 }
 int* Board::Convert(char l, int n) {
 	int cordinate[2];
-	cordinate[0] = n-1;
+	cordinate[0] = 8-n;
 	switch (l)
 	{
 	case 'A':
