@@ -14,6 +14,7 @@ public:
 		char stagemove;
 		char color;
 		vector vectors[10]; 
+		int possibleMoves[100][2];
 
 	};
 	vector l = { 1,1 };

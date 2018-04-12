@@ -15,7 +15,7 @@ Board::Board(){
 	Primitives::Figure bishop = { 'b','f',' ',{ { 1,1 },{ -1,1 },{ 1,-1 },{ -1,-1 } }};
 	Primitives::Figure horse = { 'h','f',' ',{ { 2,1 },{ 1,2 },{ -1,2 },{ -2,1 },{ -2,-1 },{ -1,-2 },{ 1,-2 },{ 2,-1 } }};
 	Primitives::Figure rook = { 'r','f',' ',{ { 1,0 },{ 0,1 },{ -1,0 },{ 0,-1 } } };
-	Primitives::Figure pawn = { 'p','d',' ',{ 1,0 } };
+	Primitives::Figure pawn = { 'p','d',' ',{1,0} };
 
 	//init field
 	for (int i = 0; i < 8; i++)
@@ -45,6 +45,17 @@ Board::Board(){
 	{
 		matrix[0][i].color = matrix[1][i].color ='b';
 		matrix[7][i].color = matrix[6][i].color = 'w';
+
+	}
+	//Changing sign of white
+	for (int i = 0; i < 8; i++)
+	{
+		for (int j = 0; j < 10; j++) matrix[7][i].vectors[j].x = -1 * matrix[7][i].vectors[j].x;
+		for (int j = 0; j < 10; j++) matrix[7][i].vectors[j].y = -1 * matrix[7][i].vectors[j].y;
+		for (int j = 0; j < 10; j++) matrix[6][i].vectors[j].x = -1 * matrix[6][i].vectors[j].x;
+		for (int j = 0; j < 10; j++) matrix[6][i].vectors[j].y = -1 * matrix[6][i].vectors[j].y;
+
+		
 
 	}
 	
@@ -120,4 +131,18 @@ int* Board::Convert(char l, int n) {
 
 	return cordinate;
 }
+void Board::getPossibleMoves(char x, int y) {
+	int x_pos = Board::Convert(x, y)[0];
+	int y_pos = Board::Convert(x, y)[1];
 
+	cout << x_pos << " " << y_pos << endl;
+
+
+	Primitives::Figure sample = this->matrix[x_pos][y_pos];
+	if ( sample.stagemove == 'd') {
+		cout << x_pos + sample.vectors[0].x << " " << y_pos+ sample.vectors[0].y << endl;
+		cout << x_pos + 2*sample.vectors[0].x << " " << y_pos + 2*sample.vectors[0].y << endl;
+
+	}
+
+}
