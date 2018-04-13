@@ -15,7 +15,7 @@ Board::Board(){
 	Primitives::Figure bishop = { 'b','f',' ',{ { 1,1 },{ -1,1 },{ 1,-1 },{ -1,-1 } }};
 	Primitives::Figure horse = { 'h','f',' ',{ { 2,1 },{ 1,2 },{ -1,2 },{ -2,1 },{ -2,-1 },{ -1,-2 },{ 1,-2 },{ 2,-1 } }};
 	Primitives::Figure rook = { 'r','f',' ',{ { 1,0 },{ 0,1 },{ -1,0 },{ 0,-1 } } };
-	Primitives::Figure pawn = { 'p','d',' ',{1,0} };
+	Primitives::Figure pawn = { 'p','d',' ',{1,0}};
 
 	//init field
 	for (int i = 0; i < 8; i++)
@@ -77,7 +77,7 @@ void Board::show() {
 }
 
 bool Board::Move(char l1, int n1, char l2, int n2) {
-	bool result = true;
+	bool result = false;
 	Primitives::Figure empty = { '_','_','_',{} };
 	int StartPos[2];
 	int FinalPos[2];
@@ -85,14 +85,31 @@ bool Board::Move(char l1, int n1, char l2, int n2) {
 	StartPos[1] = Board::Convert(l1, n1)[1];
 	FinalPos[0] = Board::Convert(l2, n2)[0];
 	FinalPos[1] = Board::Convert(l2, n2)[1];
-	cout << "Moving " << StartPos[0] << StartPos[1] << " " << FinalPos[0] << FinalPos[1] << endl;
-	if (matrix[StartPos[0]][StartPos[1]].name != '_') {
-		matrix[FinalPos[0]][FinalPos[1]] = matrix[StartPos[0]][StartPos[1]];
-		matrix[StartPos[0]][StartPos[1]]= empty;
+
+	Board::getPossibleMoves(StartPos[0], StartPos[1]);
+
+	for (int i = 0; i < 100; i++)
+	{
+		if (
+			this->matrix[StartPos[0]][StartPos[1]].possibleMoves[i][0] == FinalPos[0]
+			                              &&
+			this->matrix[StartPos[0]][StartPos[1]].possibleMoves[i][1] == FinalPos[1])
+		{
+			
+			if (this->matrix[StartPos[0]][StartPos[1]].stagemove == 'd' ) {
+				
+				this->matrix[StartPos[0]][StartPos[1]].stagemove = 'o';
+			}
+
+		
+
+			this->matrix[FinalPos[0]][FinalPos[1]] = this->matrix[StartPos[0]][StartPos[1]];
+			this->matrix[StartPos[0]][StartPos[1]] = empty;
+			result = true;
+			break;
+		}
 	}
-	else {
-		result = false;
-	}
+
 	return result;
 }
 int* Board::Convert(char l, int n) {
@@ -131,17 +148,25 @@ int* Board::Convert(char l, int n) {
 
 	return cordinate;
 }
-void Board::getPossibleMoves(char x, int y) {
-	int x_pos = Board::Convert(x, y)[0];
-	int y_pos = Board::Convert(x, y)[1];
+void Board::getPossibleMoves(char x_pos, int y_pos) {
 
-	cout << x_pos << " " << y_pos << endl;
+	//null possible moves array
+
+	for (int i = 0; i < 100; i++)
+	{
+		this->matrix[x_pos][y_pos].possibleMoves[i][0] = 0;
+		this->matrix[x_pos][y_pos].possibleMoves[i][1] = 0;
+	}
+	
+
 
 
 	Primitives::Figure sample = this->matrix[x_pos][y_pos];
 	if ( sample.stagemove == 'd') {
-		cout << x_pos + sample.vectors[0].x << " " << y_pos+ sample.vectors[0].y << endl;
-		cout << x_pos + 2*sample.vectors[0].x << " " << y_pos + 2*sample.vectors[0].y << endl;
+		this->matrix[x_pos][y_pos].possibleMoves[0][0] = x_pos + sample.vectors[0].x;
+		this->matrix[x_pos][y_pos].possibleMoves[0][1] = y_pos + sample.vectors[0].y;
+		this->matrix[x_pos][y_pos].possibleMoves[1][0] = x_pos + 2 * sample.vectors[0].x;
+		this->matrix[x_pos][y_pos].possibleMoves[1][1] = y_pos + 2 * sample.vectors[0].y;
 
 	}
 
