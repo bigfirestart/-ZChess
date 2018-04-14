@@ -25,13 +25,13 @@ Board::Board(){
 			}
 		}
 
-	//adding fidures to the field
+	//adding figures to the field
 
 	matrix[0][0]  =  matrix [0][7] = matrix[7][0] = matrix[7][7] = rook;
 	matrix[0][1] = matrix[0][6] = matrix[7][1] = matrix[7][6] = horse;
 	matrix[0][2] = matrix[0][5] = matrix[7][2] = matrix[7][5] = bishop;
-	matrix[0][3] = matrix[7][4] =  queen;
-	matrix[0][4] = matrix[7][3] = king;
+	matrix[0][3] = matrix[7][3] =  queen;
+	matrix[0][4] = matrix[7][4] = king;
 	for (int i = 0; i < 8; i++)
 	{
 		matrix[1][i] = pawn;
@@ -86,7 +86,7 @@ bool Board::Move(char l1, int n1, char l2, int n2) {
 	FinalPos[0] = Board::Convert(l2, n2)[0];
 	FinalPos[1] = Board::Convert(l2, n2)[1];
 
-	Board::getPossibleMoves(StartPos[0], StartPos[1]);
+	Board::getPossibleMoves(StartPos[0], StartPos[1], FinalPos[0], FinalPos[1]);
 
 	for (int i = 0; i < 100; i++)
 	{
@@ -148,9 +148,13 @@ int* Board::Convert(char l, int n) {
 
 	return cordinate;
 }
-void Board::getPossibleMoves(char x_pos, int y_pos) {
+void Board::getPossibleMoves(char x_pos, int y_pos, int x_final, int y_final) {
+
 
 	//null possible moves array
+
+	//check for existence of obstacle
+	bool obstacle = false;
 
 	for (int i = 0; i < 100; i++)
 	{
@@ -169,5 +173,66 @@ void Board::getPossibleMoves(char x_pos, int y_pos) {
 		this->matrix[x_pos][y_pos].possibleMoves[1][1] = y_pos + 2 * sample.vectors[0].y;
 
 	}
-
+	else if (sample.stagemove == 'o' && sample.name == 'p' && this->matrix[x_pos + sample.vectors[0].x][y_pos + sample.vectors[0].y].name == '_')
+	{
+		this->matrix[x_pos][y_pos].possibleMoves[0][0] = x_pos + sample.vectors[0].x;
+		this->matrix[x_pos][y_pos].possibleMoves[0][1] = y_pos + sample.vectors[0].y;
+	}
+	//for horse
+	else if (this->matrix[x_pos][y_pos].name == 'h' && y_final < 8 && x_final < 8)
+	{
+		for (int i = 0; i < 8; i++)
+		{
+			if (x_pos + sample.vectors[i].x == x_final && y_pos + sample.vectors[i].y == y_final &&
+				this->matrix[x_pos + sample.vectors[i].x][y_pos + sample.vectors[i].y].color != this->matrix[x_pos][y_pos].color)
+			{
+				this->matrix[x_pos][y_pos].possibleMoves[0][0] = x_pos + sample.vectors[i].x;
+				this->matrix[x_pos][y_pos].possibleMoves[0][1] = y_pos + sample.vectors[i].y;
+			}
+		}
+	}
+	//for bishop
+	else if (this->matrix[x_pos][y_pos].name == 'b' && y_final < 8 && x_final < 8)
+	{
+		for (int i = 0; i < 4; i++)
+		{
+			obstacle = false;
+			for (int j = 1; j < 8; j++)
+			{
+				//check for obstacle existence
+				if (x_pos + j * sample.vectors[i].x < 8 && y_pos + j * sample.vectors[i].y < 8)
+					if (this->matrix[x_pos + j * sample.vectors[i].x][y_pos + j * sample.vectors[i].y].name != '_'
+						&& (x_pos + j * sample.vectors[i].x != x_final || y_pos + j * sample.vectors[i].y != y_final)) obstacle = true;
+				//change coordinates
+				if (x_pos + j * sample.vectors[i].x == x_final && y_pos + j * sample.vectors[i].y == y_final && !obstacle &&
+					this->matrix[x_pos + j * sample.vectors[i].x][y_pos + j * sample.vectors[i].y].color != this->matrix[x_pos][y_pos].color)
+				{
+					this->matrix[x_pos][y_pos].possibleMoves[0][0] = x_pos + j * sample.vectors[i].x;
+					this->matrix[x_pos][y_pos].possibleMoves[0][1] = y_pos + j * sample.vectors[i].y;
+				}
+			}
+		}
+	}
+	//for rook
+	else if (this->matrix[x_pos][y_pos].name == 'r' && y_final < 8 && x_final < 8)
+	{
+		for (int i = 0; i < 4; i++)
+		{
+			obstacle = false;
+			for (int j = 1; j < 8; j++)
+			{
+				//check for obstacle existence
+				if (x_pos + j * sample.vectors[i].x < 8 && y_pos + j * sample.vectors[i].y < 8)
+					if (this->matrix[x_pos + j * sample.vectors[i].x][y_pos + j * sample.vectors[i].y].name != '_'
+						&& (x_pos + j * sample.vectors[i].x != x_final || y_pos + j * sample.vectors[i].y != y_final)) obstacle = true;
+				//change coordinates
+				if (x_pos + j * sample.vectors[i].x == x_final && y_pos + j * sample.vectors[i].y == y_final && !obstacle && 
+					this->matrix[x_pos + j * sample.vectors[i].x][y_pos + j * sample.vectors[i].y].color != this->matrix[x_pos][y_pos].color)
+				{
+					this->matrix[x_pos][y_pos].possibleMoves[0][0] = x_pos + j * sample.vectors[i].x;
+					this->matrix[x_pos][y_pos].possibleMoves[0][1] = y_pos + j * sample.vectors[i].y;
+				}
+			}
+		}
+	}
 }
