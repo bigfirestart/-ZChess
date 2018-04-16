@@ -178,10 +178,14 @@ void Board::getPossibleMoves(char x_pos, int y_pos, int x_final, int y_final) {
 		{
 			int for_x = x_pos + sample.vectors[i].x;
 			int for_y = y_pos + sample.vectors[i].y;
+			char color = sample.color;
+
 			if (for_x < 8 && for_x >= 0) {
 				if (for_y < 8 && for_y >= 0) {
-					this->matrix[x_pos][y_pos].possibleMoves[i][0] = x_pos + sample.vectors[i].x;
-					this->matrix[x_pos][y_pos].possibleMoves[i][1] = y_pos + sample.vectors[i].y;
+					if (matrix[for_x][for_y].color != color) {
+						this->matrix[x_pos][y_pos].possibleMoves[i][0] = x_pos + sample.vectors[i].x;
+						this->matrix[x_pos][y_pos].possibleMoves[i][1] = y_pos + sample.vectors[i].y;
+					}
 				}
 			}
 			
