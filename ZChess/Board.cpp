@@ -219,4 +219,5 @@ void Board::getPossibleMoves(char x_pos, int y_pos, int x_final, int y_final) {
 			}
 		}
 	}
+
 }
