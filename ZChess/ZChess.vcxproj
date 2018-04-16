@@ -123,7 +123,7 @@
     <ClInclude Include="Primitives.h" />
   </ItemGroup>
   <ItemGroup>
-    <Text Include="..\..\.gitignore" />
+    <Image Include="Icon.ico" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

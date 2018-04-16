@@ -166,6 +166,8 @@ void Board::getPossibleMoves(char x_pos, int y_pos, int x_final, int y_final) {
 
 
 	Primitives::Figure sample = this->matrix[x_pos][y_pos];
+
+	//For pown on first move
 	if ( sample.stagemove == 'd') {
 		this->matrix[x_pos][y_pos].possibleMoves[0][0] = x_pos + sample.vectors[0].x;
 		this->matrix[x_pos][y_pos].possibleMoves[0][1] = y_pos + sample.vectors[0].y;
@@ -173,6 +175,7 @@ void Board::getPossibleMoves(char x_pos, int y_pos, int x_final, int y_final) {
 		this->matrix[x_pos][y_pos].possibleMoves[1][1] = y_pos + 2 * sample.vectors[0].y;
 
 	}
+	//for horse king and pawn
 	if (sample.stagemove == 'o') {
 		for (int i = 0; i < 10; i++)
 		{
@@ -192,11 +195,7 @@ void Board::getPossibleMoves(char x_pos, int y_pos, int x_final, int y_final) {
 		}
 
 	}
-	/*else if (sample.stagemove == 'o' && sample.name == 'p' && this->matrix[x_pos + sample.vectors[0].x][y_pos + sample.vectors[0].y].name == '_')
-	{
-		this->matrix[x_pos][y_pos].possibleMoves[0][0] = x_pos + sample.vectors[0].x;
-		this->matrix[x_pos][y_pos].possibleMoves[0][1] = y_pos + sample.vectors[0].y;
-	}*/
+
 	//for horse
 
 

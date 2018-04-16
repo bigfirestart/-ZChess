@@ -31,8 +31,8 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <Text Include="..\..\.gitignore">
+    <Image Include="Icon.ico">
       <Filter>Файлы ресурсов</Filter>
-    </Text>
+    </Image>
   </ItemGroup>
 </Project>
