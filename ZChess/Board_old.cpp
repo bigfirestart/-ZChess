@@ -76,6 +76,7 @@ void Board::show() {
 	cout << endl;
 }
 
+// Moving 1 Figure to 2 (if possible return true and moving)
 bool Board::Move(char l1, int n1, char l2, int n2) {
 	bool result = false;
 	Primitives::Figure empty = { '_','_','_',{} };
@@ -177,6 +178,8 @@ void Board::getPossibleMoves(char x_pos, int y_pos, int x_final, int y_final) {
 	}
 	//for horse king and pawn
 	if (sample.stagemove == 'o') {
+
+		
 		for (int i = 0; i < 10; i++)
 		{
 			int for_x = x_pos + sample.vectors[i].x;
@@ -192,6 +195,30 @@ void Board::getPossibleMoves(char x_pos, int y_pos, int x_final, int y_final) {
 				}
 			}
 
+		}
+		
+
+		if (sample.name == 'p') {
+			
+			// pawn cant eat on her vector
+			if (this->matrix[x_pos+sample.vectors[0].x][y_pos].name != '_') {
+				for (int i = 0; i < 100; i++)
+				{
+					this->matrix[x_pos][y_pos].possibleMoves[i][0] = 0;
+					this->matrix[x_pos][y_pos].possibleMoves[i][1] = 0;
+				}
+			}
+			//testing 
+			Primitives::Figure left = this->matrix[x_pos + sample.vectors[0].x][y_pos + sample.vectors[0].x];
+			Primitives::Figure rigth = this->matrix[x_pos + sample.vectors[0].x][y_pos - sample.vectors[0].x];
+			if (left.color != sample.color && left.color != '_') {
+				this->matrix[x_pos][y_pos].possibleMoves[1][0] = x_pos + sample.vectors[0].x;
+				this->matrix[x_pos][y_pos].possibleMoves[1][1] = y_pos + sample.vectors[0].x;
+			}
+			if (rigth.color != sample.color && rigth.color != '_') {
+				this->matrix[x_pos][y_pos].possibleMoves[100][0] = x_pos + sample.vectors[0].x;
+				this->matrix[x_pos][y_pos].possibleMoves[100][1] = y_pos - sample.vectors[0].x;
+			}
 		}
 
 	}
