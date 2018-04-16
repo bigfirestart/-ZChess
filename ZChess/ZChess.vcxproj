@@ -115,15 +115,15 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Main.cpp" />
-    <ClCompile Include="Board.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="Board.h" />
-    <ClInclude Include="Primitives.h" />
-  </ItemGroup>
-  <ItemGroup>
     <Image Include="Icon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Board_old.h" />
+    <ClInclude Include="Primitives_old.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Board_old.cpp" />
+    <ClCompile Include="Main.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

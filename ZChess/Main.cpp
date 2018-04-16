@@ -1,7 +1,7 @@
 #include <iostream>
 #include <string>
-#include "Board.h"
-#include "Primitives.h"
+#include "Board_old.h"
+#include "Primitives_old.h"
 
 using namespace std;
 
