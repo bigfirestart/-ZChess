@@ -1,3 +1,2 @@
-﻿  Board.cpp
-c:\users\bigfirestart\documents\github\zchess\zchess\board.cpp(149): warning C4172: возвращение адреса локальной или временной переменной : cordinate
+﻿  Main.cpp
   ZChess.vcxproj -> C:\Users\bigfirestart\Documents\GitHub\ZChess\Debug\ZChess.exe

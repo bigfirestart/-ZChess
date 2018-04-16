@@ -13,7 +13,7 @@ Board::Board(){
 	Primitives::Figure king = { 'k','o',' ',{ { 1,1 },{ 1,0 },{ 0,1 },{ -1,1 },{ 1,-1 },{ 0,-1 },{ -1,0 },{ -1,-1 } } };
 	Primitives::Figure queen = { 'q','f',' ',{ { 1,1 },{ 1,0 },{ 0,1 },{ -1,1 },{ 1,-1 },{ 0,-1 },{ -1,0 },{ -1,-1 } }};
 	Primitives::Figure bishop = { 'b','f',' ',{ { 1,1 },{ -1,1 },{ 1,-1 },{ -1,-1 } }};
-	Primitives::Figure horse = { 'h','f',' ',{ { 2,1 },{ 1,2 },{ -1,2 },{ -2,1 },{ -2,-1 },{ -1,-2 },{ 1,-2 },{ 2,-1 } }};
+	Primitives::Figure horse = { 'h','o',' ',{ { 2,1 },{ 1,2 },{ -1,2 },{ -2,1 },{ -2,-1 },{ -1,-2 },{ 1,-2 },{ 2,-1 } }};
 	Primitives::Figure rook = { 'r','f',' ',{ { 1,0 },{ 0,1 },{ -1,0 },{ 0,-1 } } };
 	Primitives::Figure pawn = { 'p','d',' ',{1,0}};
 
@@ -173,12 +173,29 @@ void Board::getPossibleMoves(char x_pos, int y_pos, int x_final, int y_final) {
 		this->matrix[x_pos][y_pos].possibleMoves[1][1] = y_pos + 2 * sample.vectors[0].y;
 
 	}
-	else if (sample.stagemove == 'o' && sample.name == 'p' && this->matrix[x_pos + sample.vectors[0].x][y_pos + sample.vectors[0].y].name == '_')
+	if (sample.stagemove == 'o') {
+		for (int i = 0; i < 10; i++)
+		{
+			int for_x = x_pos + sample.vectors[i].x;
+			int for_y = y_pos + sample.vectors[i].y;
+			if (for_x < 8 && for_x >= 0) {
+				if (for_y < 8 && for_y >= 0) {
+					this->matrix[x_pos][y_pos].possibleMoves[i][0] = x_pos + sample.vectors[i].x;
+					this->matrix[x_pos][y_pos].possibleMoves[i][1] = y_pos + sample.vectors[i].y;
+				}
+			}
+			
+		}
+
+	}
+	/*else if (sample.stagemove == 'o' && sample.name == 'p' && this->matrix[x_pos + sample.vectors[0].x][y_pos + sample.vectors[0].y].name == '_')
 	{
 		this->matrix[x_pos][y_pos].possibleMoves[0][0] = x_pos + sample.vectors[0].x;
 		this->matrix[x_pos][y_pos].possibleMoves[0][1] = y_pos + sample.vectors[0].y;
-	}
+	}*/
 	//for horse
+
+
 	else if (this->matrix[x_pos][y_pos].name == 'h' && y_final < 8 && x_final < 8)
 	{
 		for (int i = 0; i < 8; i++)
@@ -214,6 +231,7 @@ void Board::getPossibleMoves(char x_pos, int y_pos, int x_final, int y_final) {
 		}
 	}
 	//for rook
+
 	else if (this->matrix[x_pos][y_pos].name == 'r' && y_final < 8 && x_final < 8)
 	{
 		for (int i = 0; i < 4; i++)

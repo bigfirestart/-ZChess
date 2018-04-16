@@ -17,7 +17,7 @@ int main() {
 	field.Move(l1, n1, l2, n2);
 	
 	
-	system("pause");
+	//system("pause");
 	field.cls();
 
 }
