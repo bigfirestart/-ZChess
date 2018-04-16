@@ -192,68 +192,30 @@ void Board::getPossibleMoves(char x_pos, int y_pos, int x_final, int y_final) {
 		}
 
 	}
-	/*else if (sample.stagemove == 'o' && sample.name == 'p' && this->matrix[x_pos + sample.vectors[0].x][y_pos + sample.vectors[0].y].name == '_')
+	if (sample.stagemove == 'f')
 	{
-		this->matrix[x_pos][y_pos].possibleMoves[0][0] = x_pos + sample.vectors[0].x;
-		this->matrix[x_pos][y_pos].possibleMoves[0][1] = y_pos + sample.vectors[0].y;
-	}*/
-	//for horse
-
-
-	else if (this->matrix[x_pos][y_pos].name == 'h' && y_final < 8 && x_final < 8)
-	{
-		for (int i = 0; i < 8; i++)
-		{
-			if (x_pos + sample.vectors[i].x == x_final && y_pos + sample.vectors[i].y == y_final &&
-				this->matrix[x_pos + sample.vectors[i].x][y_pos + sample.vectors[i].y].color != this->matrix[x_pos][y_pos].color)
-			{
-				this->matrix[x_pos][y_pos].possibleMoves[0][0] = x_pos + sample.vectors[i].x;
-				this->matrix[x_pos][y_pos].possibleMoves[0][1] = y_pos + sample.vectors[i].y;
-			}
-		}
-	}
-	//for bishop
-	else if (this->matrix[x_pos][y_pos].name == 'b' && y_final < 8 && x_final < 8)
-	{
-		for (int i = 0; i < 4; i++)
+		int index = 0;
+		for (int i = 0; i < 10; i++)
 		{
 			obstacle = false;
 			for (int j = 1; j < 8; j++)
 			{
+				int for_x = x_pos + j * sample.vectors[i].x;
+				int for_y = y_pos + j * sample.vectors[i].y;
+				char color = sample.color;
+
 				//check for obstacle existence
 				if (x_pos + j * sample.vectors[i].x < 8 && y_pos + j * sample.vectors[i].y < 8)
 					if (this->matrix[x_pos + j * sample.vectors[i].x][y_pos + j * sample.vectors[i].y].name != '_'
 						&& (x_pos + j * sample.vectors[i].x != x_final || y_pos + j * sample.vectors[i].y != y_final)) obstacle = true;
 				//change coordinates
-				if (x_pos + j * sample.vectors[i].x == x_final && y_pos + j * sample.vectors[i].y == y_final && !obstacle &&
-					this->matrix[x_pos + j * sample.vectors[i].x][y_pos + j * sample.vectors[i].y].color != this->matrix[x_pos][y_pos].color)
-				{
-					this->matrix[x_pos][y_pos].possibleMoves[0][0] = x_pos + j * sample.vectors[i].x;
-					this->matrix[x_pos][y_pos].possibleMoves[0][1] = y_pos + j * sample.vectors[i].y;
-				}
-			}
-		}
-	}
-	//for rook
-
-	else if (this->matrix[x_pos][y_pos].name == 'r' && y_final < 8 && x_final < 8)
-	{
-		for (int i = 0; i < 4; i++)
-		{
-			obstacle = false;
-			for (int j = 1; j < 8; j++)
-			{
-				//check for obstacle existence
-				if (x_pos + j * sample.vectors[i].x < 8 && y_pos + j * sample.vectors[i].y < 8)
-					if (this->matrix[x_pos + j * sample.vectors[i].x][y_pos + j * sample.vectors[i].y].name != '_'
-						&& (x_pos + j * sample.vectors[i].x != x_final || y_pos + j * sample.vectors[i].y != y_final)) obstacle = true;
-				//change coordinates
-				if (x_pos + j * sample.vectors[i].x == x_final && y_pos + j * sample.vectors[i].y == y_final && !obstacle && 
-					this->matrix[x_pos + j * sample.vectors[i].x][y_pos + j * sample.vectors[i].y].color != this->matrix[x_pos][y_pos].color)
-				{
-					this->matrix[x_pos][y_pos].possibleMoves[0][0] = x_pos + j * sample.vectors[i].x;
-					this->matrix[x_pos][y_pos].possibleMoves[0][1] = y_pos + j * sample.vectors[i].y;
-				}
+				if (for_x >= 0 && for_x < 8 && for_y >= 0 && for_y < 8)
+					if (!obstacle && matrix[for_x][for_y].color != color)
+					{
+						this->matrix[x_pos][y_pos].possibleMoves[index][0] = x_pos + j * sample.vectors[i].x;
+						this->matrix[x_pos][y_pos].possibleMoves[index][1] = y_pos + j * sample.vectors[i].y;
+						index++;
+					}
 			}
 		}
 	}
