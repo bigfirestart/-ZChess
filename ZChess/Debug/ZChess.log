@@ -1,6 +1,6 @@
 ﻿  Board.cpp
   Main.cpp
   Создание кода...
-c:\users\bigfirestart\documents\github\zchess\zchess\board.cpp(75): warning C4172: возвращение адреса локальной или временной переменной : cordinate
-c:\users\bigfirestart\documents\github\zchess\zchess\board.cpp(111): warning C4172: возвращение адреса локальной или временной переменной : cordinate
+c:\users\bigfirestart\documents\github\zchess\zchess\board.cpp(141): warning C4172: возвращение адреса локальной или временной переменной : cordinate
+c:\users\bigfirestart\documents\github\zchess\zchess\board.cpp(105): warning C4172: возвращение адреса локальной или временной переменной : cordinate
   ZChess.vcxproj -> C:\Users\bigfirestart\Documents\GitHub\ZChess\Debug\ZChess.exe

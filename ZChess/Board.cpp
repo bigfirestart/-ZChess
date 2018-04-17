@@ -1,6 +1,8 @@
 #include "Board.h"
 #include "Pawn.h"
+#include "Empty.h"
 #include "iostream"
+#include "King.h"
 
 
 using namespace std;
@@ -13,14 +15,42 @@ Board::~Board()
 {
 }
 void Board::Fill() {
-	Primitives* pawn = new Pawn('w');
+	Primitives* empty = new Empty;
+
+	//Filling empty
 	for (int i = 0; i < 8; i++) {
 		for (int j = 0; j < 8; j++)
 		{
-			matrix[j][i] = pawn;
+			matrix[j][i] = empty;
 		}
 		
 	}
+
+	//add black pawn
+	Primitives* b_pawn= new Pawn('b');
+	for (int i = 0; i < 8; i++) matrix[1][i] = b_pawn;
+
+	//add white pawn
+	Primitives* w_pawn = new Pawn('w');
+	for (int i = 0; i < 8; i++) matrix[6][i] = w_pawn;
+	
+
+	//add kings
+	Primitives* b_king = new King('b');
+	Primitives* w_king = new King('w');
+
+	matrix[0][4] = b_king;
+	matrix[7][4] = w_king;
+
+
+
+
+
+
+
+
+
+
 
 
 }

@@ -120,6 +120,7 @@
   <ItemGroup>
     <ClInclude Include="Board.h" />
     <ClInclude Include="Board_old.h" />
+    <ClInclude Include="Empty.h" />
     <ClInclude Include="King.h" />
     <ClInclude Include="Pawn.h" />
     <ClInclude Include="Primitives.h" />

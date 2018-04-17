@@ -7,7 +7,11 @@ private:
 	char stagemove;
 	char color;
 protected:
-	int** vectors;
+	struct vector {
+		int x;
+		int y;
+	};
+	vector* vectors;
 public:
 	Primitives(char _name, char _stagemove, char _color) {
 		name = _name;
