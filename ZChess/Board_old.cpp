@@ -5,7 +5,7 @@
 
 using namespace std;
 
-Board::Board(){
+Board_old::Board_old(){
 	
 	//creating figures (color = default)
 
@@ -61,7 +61,7 @@ Board::Board(){
 	
 }
 
-void Board::show() {
+void Board_old::show() {
 	cout << "   A  " << " B  " << " C  " << " D  " << " E  " << " F  " << " G  " << " H ";
 	cout << endl;
 	for (int i = 0; i < 8; i++)
@@ -77,7 +77,7 @@ void Board::show() {
 }
 
 // Moving 1 Figure to 2 (if possible return true and moving)
-bool Board::Move(char l1, int n1, char l2, int n2) {
+bool Board_old::Move(char l1, int n1, char l2, int n2) {
 	bool result = false;
 	Primitives::Figure empty = { '_','_','_',{} };
 	int StartPos[2];
@@ -87,7 +87,7 @@ bool Board::Move(char l1, int n1, char l2, int n2) {
 	FinalPos[0] = Board::Convert(l2, n2)[0];
 	FinalPos[1] = Board::Convert(l2, n2)[1];
 
-	Board::getPossibleMoves(StartPos[0], StartPos[1], FinalPos[0], FinalPos[1]);
+	Board_old::getPossibleMoves(StartPos[0], StartPos[1], FinalPos[0], FinalPos[1]);
 
 	for (int i = 0; i < 100; i++)
 	{
@@ -113,7 +113,7 @@ bool Board::Move(char l1, int n1, char l2, int n2) {
 
 	return result;
 }
-int* Board::Convert(char l, int n) {
+int* Board_old::Convert(char l, int n) {
 	int cordinate[2];
 	cordinate[0] = 8-n;
 	switch (l)
@@ -149,7 +149,7 @@ int* Board::Convert(char l, int n) {
 
 	return cordinate;
 }
-void Board::getPossibleMoves(char x_pos, int y_pos, int x_final, int y_final) {
+void Board_old::getPossibleMoves(char x_pos, int y_pos, int x_final, int y_final) {
 
 
 	//null possible moves array

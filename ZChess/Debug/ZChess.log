@@ -1,2 +1,10 @@
-﻿  Main.cpp
-  ZChess.vcxproj -> C:\Users\bigfirestart\Documents\GitHub\ZChess\Debug\ZChess.exe
+﻿  Board_old.cpp
+c:\users\bigfirestart\documents\github\zchess\zchess\board_old.cpp(85): error C2653: Board: не является именем класса или пространства имен
+c:\users\bigfirestart\documents\github\zchess\zchess\board_old.cpp(86): error C2653: Board: не является именем класса или пространства имен
+c:\users\bigfirestart\documents\github\zchess\zchess\board_old.cpp(87): error C2653: Board: не является именем класса или пространства имен
+c:\users\bigfirestart\documents\github\zchess\zchess\board_old.cpp(88): error C2653: Board: не является именем класса или пространства имен
+  Main.cpp
+c:\users\bigfirestart\documents\github\zchess\zchess\main.cpp(10): error C2065: king: необъявленный идентификатор
+c:\users\bigfirestart\documents\github\zchess\zchess\main.cpp(10): error C2228: выражение слева от ".name" должно представлять класс, структуру или объединение
+  c:\users\bigfirestart\documents\github\zchess\zchess\main.cpp(10): note: тип: unknown-type
+  Создание кода...

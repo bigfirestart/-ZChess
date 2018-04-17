@@ -16,6 +16,12 @@
     <Filter Include="Исходные файлы\Figures">
       <UniqueIdentifier>{2114b919-3dd6-436e-9338-95979206cfc0}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Исходные файлы\Board">
+      <UniqueIdentifier>{c12df892-00d8-40b0-8c2c-b9ab5672e22b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\Players">
+      <UniqueIdentifier>{0ac75967-798c-4af5-bdb8-b2d94ca744c5}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Image Include="Icon.ico">
