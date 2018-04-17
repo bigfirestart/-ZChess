@@ -14,6 +14,9 @@ Board::Board()
 Board::~Board()
 {
 }
+
+//Add figures for board
+
 void Board::Fill() {
 	Primitives* empty = new Empty;
 
@@ -41,19 +44,11 @@ void Board::Fill() {
 
 	matrix[0][4] = b_king;
 	matrix[7][4] = w_king;
-
-
-
-
-
-
-
-
-
-
-
-
 }
+
+//show with letters and numbers
+
+
 void Board::show() {
 	cout << "   A  " << " B  " << " C  " << " D  " << " E  " << " F  " << " G  " << " H ";
 	cout << endl;
@@ -68,6 +63,8 @@ void Board::show() {
 	}
 	cout << endl;
 }
+
+//Convert to char -> int
 int* Board::Convert(char l, int n) {
 		int cordinate[2];
 		cordinate[0] = 8-n;
@@ -103,7 +100,12 @@ int* Board::Convert(char l, int n) {
 		}
 	
 		return cordinate;
+
 	}
+
+
+
+//testing
 char* Board::Convert_rev(int l, int n) {
 	char cordinate[2];
 	cordinate[1] = char(8 - l);

@@ -22,6 +22,9 @@
     <Filter Include="Исходные файлы\Players">
       <UniqueIdentifier>{0ac75967-798c-4af5-bdb8-b2d94ca744c5}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Исходные файлы\Old">
+      <UniqueIdentifier>{c4086988-baf2-40ba-9bd2-5467cb40a673}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Image Include="Icon.ico">
@@ -29,12 +32,6 @@
     </Image>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Board_old.h">
-      <Filter>Исходные файлы</Filter>
-    </ClInclude>
-    <ClInclude Include="Primitives_old.h">
-      <Filter>Исходные файлы</Filter>
-    </ClInclude>
     <ClInclude Include="Primitives.h">
       <Filter>Исходные файлы\Figures</Filter>
     </ClInclude>
@@ -44,22 +41,28 @@
     <ClInclude Include="King.h">
       <Filter>Исходные файлы\Figures</Filter>
     </ClInclude>
-    <ClInclude Include="Board.h">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
     <ClInclude Include="Empty.h">
       <Filter>Исходные файлы\Figures</Filter>
+    </ClInclude>
+    <ClInclude Include="Board_old.h">
+      <Filter>Исходные файлы\Old</Filter>
+    </ClInclude>
+    <ClInclude Include="Primitives_old.h">
+      <Filter>Исходные файлы\Old</Filter>
+    </ClInclude>
+    <ClInclude Include="Board.h">
+      <Filter>Исходные файлы\Board</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="Board_old.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
     <ClCompile Include="Board.cpp">
-      <Filter>Исходные файлы</Filter>
+      <Filter>Исходные файлы\Board</Filter>
+    </ClCompile>
+    <ClCompile Include="Board_old.cpp">
+      <Filter>Исходные файлы\Old</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

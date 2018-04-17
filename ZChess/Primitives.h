@@ -3,9 +3,14 @@
 
 class Primitives {
 private:
-	char name;
-	char stagemove;
 	char color;
+	char name;
+
+	//is need?
+	char stagemove;
+
+
+	
 protected:
 	struct vector {
 		int x;
