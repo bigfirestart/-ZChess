@@ -4,7 +4,7 @@
 class Board
 {
 public:
-	Primitives matrix[8][8];
+	Primitives* matrix[8][8];
 	void Fill();
 	void show();
 	int* Convert(char l, int n);
