@@ -11,8 +11,8 @@
 *.userprefs
 
 # Build results
-Debug/
-.vs/
+Debug1/
+.vs — 1/
 [Dd]ebug/
 [Dd]ebugPublic/
 [Rr]elease/
