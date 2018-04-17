@@ -119,6 +119,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Board_old.h" />
+    <ClInclude Include="King.h" />
+    <ClInclude Include="Pawn.h" />
+    <ClInclude Include="Primitives.h" />
     <ClInclude Include="Primitives_old.h" />
   </ItemGroup>
   <ItemGroup>

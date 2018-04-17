@@ -13,6 +13,9 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Исходные файлы\Figures">
+      <UniqueIdentifier>{2114b919-3dd6-436e-9338-95979206cfc0}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Image Include="Icon.ico">
@@ -25,6 +28,15 @@
     </ClInclude>
     <ClInclude Include="Primitives_old.h">
       <Filter>Исходные файлы</Filter>
+    </ClInclude>
+    <ClInclude Include="Primitives.h">
+      <Filter>Исходные файлы\Figures</Filter>
+    </ClInclude>
+    <ClInclude Include="Pawn.h">
+      <Filter>Исходные файлы\Figures</Filter>
+    </ClInclude>
+    <ClInclude Include="King.h">
+      <Filter>Исходные файлы\Figures</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
