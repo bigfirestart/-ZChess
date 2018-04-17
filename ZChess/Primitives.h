@@ -10,7 +10,7 @@ public:
 	char stagemove;
 	char color;
 	vector vectors[10];
-	virtual bool Move() = 0;
+	bool Move() {};
 
 
 

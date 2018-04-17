@@ -44,12 +44,18 @@
     <ClInclude Include="King.h">
       <Filter>Исходные файлы\Figures</Filter>
     </ClInclude>
+    <ClInclude Include="Board.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
     <ClCompile Include="Board_old.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="Board.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
   </ItemGroup>

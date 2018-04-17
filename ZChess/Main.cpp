@@ -1,13 +1,16 @@
 #include <iostream>
 #include <string>
 #include "King.h"
+#include "Board.h"
 
 using namespace std;
 
 
 int main() {
 
-	cout << king.name;
+	Board board;
+	board.show();
+
 
 
 

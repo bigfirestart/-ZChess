@@ -1,10 +1,3 @@
-﻿  Board_old.cpp
-c:\users\bigfirestart\documents\github\zchess\zchess\board_old.cpp(85): error C2653: Board: не является именем класса или пространства имен
-c:\users\bigfirestart\documents\github\zchess\zchess\board_old.cpp(86): error C2653: Board: не является именем класса или пространства имен
-c:\users\bigfirestart\documents\github\zchess\zchess\board_old.cpp(87): error C2653: Board: не является именем класса или пространства имен
-c:\users\bigfirestart\documents\github\zchess\zchess\board_old.cpp(88): error C2653: Board: не является именем класса или пространства имен
-  Main.cpp
-c:\users\bigfirestart\documents\github\zchess\zchess\main.cpp(10): error C2065: king: необъявленный идентификатор
-c:\users\bigfirestart\documents\github\zchess\zchess\main.cpp(10): error C2228: выражение слева от ".name" должно представлять класс, структуру или объединение
-  c:\users\bigfirestart\documents\github\zchess\zchess\main.cpp(10): note: тип: unknown-type
-  Создание кода...
+﻿  Board.cpp
+c:\users\bigfirestart\documents\github\zchess\zchess\board.cpp(71): warning C4172: возвращение адреса локальной или временной переменной : cordinate
+  ZChess.vcxproj -> C:\Users\bigfirestart\Documents\GitHub\ZChess\Debug\ZChess.exe
