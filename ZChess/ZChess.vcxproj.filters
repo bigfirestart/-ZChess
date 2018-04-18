@@ -53,6 +53,18 @@
     <ClInclude Include="Board.h">
       <Filter>Исходные файлы\Board</Filter>
     </ClInclude>
+    <ClInclude Include="Bishop.h">
+      <Filter>Исходные файлы\Figures</Filter>
+    </ClInclude>
+    <ClInclude Include="Queen.h">
+      <Filter>Исходные файлы\Figures</Filter>
+    </ClInclude>
+    <ClInclude Include="Rook.h">
+      <Filter>Исходные файлы\Figures</Filter>
+    </ClInclude>
+    <ClInclude Include="Horse.h">
+      <Filter>Исходные файлы\Figures</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
