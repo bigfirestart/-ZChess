@@ -3,8 +3,8 @@
 #pragma once
 class Empty : public Primitives {
 public:
-	bool Move() {
+	bool Move(int StartPos[2], int FinalPos[2]) {
 		return true;
 	}
-	Empty() : Primitives('_', '_', '_') {};
+	Empty() : Primitives('_', '_') {};
 };

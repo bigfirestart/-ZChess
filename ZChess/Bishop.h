@@ -3,10 +3,10 @@
 
 class Bishop : public Primitives {
 public:
-	bool Move() {
+	bool Move(int StartPos[2], int FinalPos[2]) {
 		return true;
 	}
-	Bishop(char col) : Primitives('b', 'f', col) {
+	Bishop(char col) : Primitives('b', col) {
 		this->vectors = new vector[4]{ { 1,1 },{ -1,1 },{ 1,-1 },{ -1,-1 } };
 		if (col == 'w') {
 			for (int i = 0; i < 4; i++) {

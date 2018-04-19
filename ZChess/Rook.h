@@ -3,10 +3,10 @@
 
 class Rook : public Primitives {
 public:
-	bool Move() {
+	bool Move(int StartPos[2], int FinalPos[2]) {
 		return true;
 	}
-	Rook(char col) : Primitives('r', 'f', col) {
+	Rook(char col) : Primitives('r', col) {
 		this->vectors = new vector[4]{ { 1,0 },{ 0,1 },{ 0,-1 },{ -1,0 } };;
 		if (col == 'w') {
 			for (int i = 0; i < 4; i++) {
