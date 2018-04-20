@@ -45,45 +45,31 @@ void Board::Fill() {
 	
 
 	//add kings
-	Primitives* b_king = new King('b');
-	Primitives* w_king = new King('w');
 
-	matrix[0][4] = b_king;
-	matrix[7][4] = w_king;
+	matrix[0][4] = new King('b');
+	matrix[7][4] = new King('w');
 
 
 
 	//add horse
 
-	Primitives* b_horse = new Horse('b');
-	Primitives* w_horse = new Horse('w');
-
-	matrix[0][1] = matrix[0][6] = b_horse;
-	matrix[7][1] = matrix[7][6] = w_horse;
+	matrix[0][1] = matrix[0][6] = new Horse('b');
+	matrix[7][1] = matrix[7][6] = new Horse('w');
 
 	//rook
 
-	Primitives* b_rook = new Rook('b');
-	Primitives* w_rook = new Rook('w');
-
-	matrix[0][0] = matrix[0][7] = b_rook;
-	matrix[7][0] = matrix[7][7] = w_rook;
+	matrix[0][0] = matrix[0][7] = new Rook('b');
+	matrix[7][0] = matrix[7][7] = new Rook('w');
 
 	//Queen
 
-	Primitives* b_queen = new Queen('b');
-	Primitives* w_queen = new Queen('w');
-
-	matrix[0][3] = b_queen;
-	matrix[7][3] = w_queen;
+	matrix[0][3] = new Queen('b');
+	matrix[7][3] = new Queen('w');
 
 	//Bishop
 
-	Primitives* b_bishop = new Bishop('b');
-	Primitives* w_bishop = new Bishop('w');
-
-	matrix[0][2] = matrix[0][5] = b_bishop;
-	matrix[7][2] = matrix[7][5] = w_bishop;
+	matrix[0][2] = matrix[0][5] = new Bishop('b');
+	matrix[7][2] = matrix[7][5] = new Bishop('w');
 	
 
 }
@@ -196,14 +182,20 @@ bool Board::Move(char l1, int n1, char l2, int n2) {
 	FinalPos[1] = Board::Convert(l2, n2)[1];
 
 
+
 	Primitives* empty = new Empty;
 
-	if (matrix[StartPos[0]][StartPos[1]]->Move(StartPos, FinalPos)) {
-		result = true;
-		matrix[FinalPos[0]][FinalPos[1]] = matrix[StartPos[0]][StartPos[1]];
-		matrix[StartPos[0]][StartPos[1]] = empty;
-	}
+	char colorStart = matrix[FinalPos[0]][FinalPos[1]]->GetColor();
+	char colorFinal = matrix[StartPos[0]][StartPos[1]]->GetColor();
 
+	if (colorStart != colorFinal ) {
+
+		if (matrix[StartPos[0]][StartPos[1]]->Move(StartPos, FinalPos)) {
+			result = true;
+			matrix[FinalPos[0]][FinalPos[1]] = matrix[StartPos[0]][StartPos[1]];
+			matrix[StartPos[0]][StartPos[1]] = empty;
+		}
+	}
 
 
 	return result;
