@@ -200,3 +200,10 @@ bool Board::Move(char l1, int n1, char l2, int n2) {
 
 	return result;
 }
+
+char Board::GetFieldName(int x, int y)
+{
+	char name;
+	name = this->matrix[x][y]->GetName();
+	return name;
+}
