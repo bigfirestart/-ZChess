@@ -5,19 +5,12 @@
 class Queen : public Primitives {
 public:
 	bool Move(int StartPos[2], int FinalPos[2]) {
-		//bool obstacle;
 		bool result = false;
 		for (int i = 0; i < 8; i++)
 		{
-			//obstacle = false;
 			for (int j = 1; j < 8; j++)
-			{
-				//check for obstacle existence
-				/*if (StartPos[0] + j * vectors[i].x < 8 && StartPos[1] + j * vectors[i].y < 8)
-					if ( != '_'
-						&& (StartPos[0] + j * vectors[i].x != FinalPos[0] || StartPos[1] + j * vectors[i].y != FinalPos[1])) obstacle = true;*/
-				
-				if (StartPos[0] + j * vectors[i].x == FinalPos[0] && StartPos[1] + j * vectors[i].y == FinalPos[1])// && !obstacle)
+			{	
+				if (StartPos[0] + j * vectors[i].x == FinalPos[0] && StartPos[1] + j * vectors[i].y == FinalPos[1])
 				{
 					result = true;
 					return result;
