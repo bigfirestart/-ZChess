@@ -133,7 +133,9 @@ int* Board::Convert(char l, int n) {
 
 
 
-//testing
+//Converting (int , int) -> (char(letter), char(number))
+
+
 char* Board::Convert_rev(int l, int n) {
 	char cordinate[2];
 	cordinate[1] = char(8 - l);
@@ -148,20 +150,20 @@ char* Board::Convert_rev(int l, int n) {
 	case 2:
 		cordinate[1] = 'C';
 		break;
-	case 'D':
-		cordinate[1] = 3;
+	case 3:
+		cordinate[1] = 'D';
 		break;
-	case 'E':
-		cordinate[1] = 4;
+	case 4:
+		cordinate[1] = 'E';
 		break;
-	case 'F':
-		cordinate[1] = 5;
+	case 5:
+		cordinate[1] = 'F';
 		break;
-	case 'G':
-		cordinate[1] = 6;
+	case 6:
+		cordinate[1] = 'G';
 		break;
-	case 'H':
-		cordinate[1] = 7;
+	case 7:
+		cordinate[1] = 'H';
 		break;
 
 	default:
