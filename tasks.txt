@@ -1,0 +1,22 @@
+Timur:
+--------------------------------
+Pawn eat;
+Castling;
+Gui;
+Neiron Net;
+
+
+
+
+Kirill:
+--------------------------------
+
+Obstacle;
+Connverter to possible moves;
+Players;
+Net;
+
+
+
+Stack:
+-------------------------------
