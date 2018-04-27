@@ -195,7 +195,22 @@ bool Board::Move(char l1, int n1, char l2, int n2) {
 
 	if (colorStart != colorFinal) {
 		if (! AnyObstacle(StartPos, FinalPos)) {
-			if (matrix[StartPos[0]][StartPos[1]]->Move(StartPos, FinalPos)) {
+			if (matrix[StartPos[0]][StartPos[1]]->GetName() == 'p')
+			{
+				if (abs(FinalPos[1] - StartPos[1]) != 0 && matrix[FinalPos[0]][FinalPos[1]]->GetName() != '_' 
+					&& matrix[StartPos[0]][StartPos[1]]->Move(StartPos, FinalPos)) {
+					result = true;
+					matrix[FinalPos[0]][FinalPos[1]] = matrix[StartPos[0]][StartPos[1]];
+					matrix[StartPos[0]][StartPos[1]] = empty;
+				}
+				else if (abs(FinalPos[1] - StartPos[1]) == 0 && matrix[FinalPos[0]][FinalPos[1]]->GetName() == '_'
+					&& matrix[StartPos[0]][StartPos[1]]->Move(StartPos, FinalPos)) {
+					result = true;
+					matrix[FinalPos[0]][FinalPos[1]] = matrix[StartPos[0]][StartPos[1]];
+					matrix[StartPos[0]][StartPos[1]] = empty;
+				}
+			}
+			else if (matrix[StartPos[0]][StartPos[1]]->Move(StartPos, FinalPos)) {
 				result = true;
 				matrix[FinalPos[0]][FinalPos[1]] = matrix[StartPos[0]][StartPos[1]];
 				matrix[StartPos[0]][StartPos[1]] = empty;
