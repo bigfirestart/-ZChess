@@ -1,5 +1,6 @@
 #include "Board.h"
 #include "iostream"
+#include <cmath>
 
 
 #include "Pawn.h"
@@ -237,11 +238,17 @@ bool Board::AnyObstacle(int StartPos[2], int FinalPos[2]) {
 			_StartPos[0] = _StartPos[0] + MovingVector[0];
 			_StartPos[1] = _StartPos[1] + MovingVector[1];
 
-			if (matrix[int(_StartPos[0])][int(_StartPos[1])]->GetColor() != '_') {
-				
-				return true;
-			}
-			
+			float i;
+			float j;
+			float stxPosl = modf( _StartPos[0], &i);
+			float styPosl = modf(_StartPos[1], &j);
+
+				if (stxPosl == 0 && styPosl ==0) {
+					if (matrix[int(_StartPos[0])][int(_StartPos[1])]->GetColor() != '_') {
+
+						return true;
+					}
+				}
 
 		}
 	return false;
