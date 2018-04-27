@@ -184,6 +184,7 @@ bool Board::Move(char l1, int n1, char l2, int n2) {
 	FinalPos[1] = Board::Convert(l2, n2)[1];
 
 
+
 	Primitives* empty = new Empty;
 
 	char colorStart = matrix[FinalPos[0]][FinalPos[1]]->GetColor();
@@ -207,47 +208,41 @@ bool Board::Move(char l1, int n1, char l2, int n2) {
 
 bool Board::AnyObstacle(int StartPos[2], int FinalPos[2]) {
 
-		float _StartPos[2] = {StartPos[0], StartPos[1]};
-		float _FinalPos[2] = { FinalPos[0] , FinalPos[1] };
-		float MovingVector[2];
-		MovingVector[0] = _FinalPos[0] - _StartPos[0];
-		MovingVector[1] = _FinalPos[1] - _StartPos[1];
+	float _StartPos[2] = { StartPos[0], StartPos[1] };
+	float _FinalPos[2] = { FinalPos[0] , FinalPos[1] };
+	float MovingVector[2];
 
-		cout << MovingVector[0] << " " << MovingVector[1];
-
-		int moduleVector;
-		if (MovingVector[0] != 0) {
-			moduleVector = MovingVector[0];
-		}
-		else { moduleVector = MovingVector[1]; }
-		moduleVector = abs(moduleVector);
-
-		MovingVector[0] = MovingVector[0] / moduleVector;
-		MovingVector[1] = MovingVector[1] / moduleVector;
-
-		_StartPos[0] = _StartPos[0] + MovingVector[0];
-		_StartPos[1] = _StartPos[1] + MovingVector[1];
-		_FinalPos[0] = _FinalPos[0] - MovingVector[0];
-		_FinalPos[1] = _FinalPos[1] - MovingVector[1];
+	MovingVector[0] = _FinalPos[0] - _StartPos[0];
+	MovingVector[1] = _FinalPos[1] - _StartPos[1];
 
 
 
-		Primitives* empty = new Empty();
-		
-		
+	int moduleVector;
+	if (MovingVector[0] != 0) {
+		moduleVector = MovingVector[0];
+	}
 
-		while ((_StartPos[0] != _FinalPos[0]) && (_StartPos[1] != _FinalPos[1]))
+	else { moduleVector = MovingVector[1]; }
+	moduleVector = abs(moduleVector);
+
+	MovingVector[0] = MovingVector[0] / moduleVector;
+	MovingVector[1] = MovingVector[1] / moduleVector;
+	
+	_FinalPos[0] = _FinalPos[0] - MovingVector[0];
+	_FinalPos[1] = _FinalPos[1] - MovingVector[1];
+	
+	
+	while ( (_StartPos[0] != _FinalPos[0]) || (_StartPos[1] != _FinalPos[1])) // chesk for horse
 		{
 			_StartPos[0] = _StartPos[0] + MovingVector[0];
 			_StartPos[1] = _StartPos[1] + MovingVector[1];
-			cout << matrix[int(_StartPos[0])][int(_StartPos[1])]->GetName();
-			if (matrix[int(_StartPos[0])][int(_StartPos[1])] != empty) {
+
+			if (matrix[int(_StartPos[0])][int(_StartPos[1])]->GetColor() != '_') {
 				
 				return true;
 			}
-			system("pause");
+			
 
 		}
-		
 	return false;
 }
