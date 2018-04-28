@@ -30,7 +30,6 @@ public:
 		}
 	}
 	if(this->is_Moved == true)  {
-		system("pause");
 		for (int i = 0; i < sizeof(this->vectors); i++) {
 			if (StartPos[0] + this->vectors[i].x == FinalPos[0] && StartPos[1] + this->vectors[i].y == FinalPos[1]) {
 				result = true;

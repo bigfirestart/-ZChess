@@ -222,6 +222,8 @@ bool Board::Move(char l1, int n1, char l2, int n2) {
 	return result;
 }
 
+
+//cheking any obstacles on the figures way(agains Final position)
 bool Board::AnyObstacle(int StartPos[2], int FinalPos[2]) {
 
 	float _StartPos[2] = { StartPos[0], StartPos[1] };
@@ -232,7 +234,7 @@ bool Board::AnyObstacle(int StartPos[2], int FinalPos[2]) {
 	MovingVector[1] = _FinalPos[1] - _StartPos[1];
 
 
-
+	//module to get single vector
 	int moduleVector;
 	if (MovingVector[0] != 0) {
 		moduleVector = MovingVector[0];
@@ -241,23 +243,29 @@ bool Board::AnyObstacle(int StartPos[2], int FinalPos[2]) {
 	else { moduleVector = MovingVector[1]; }
 	moduleVector = abs(moduleVector);
 
+	//getting single vector
 	MovingVector[0] = MovingVector[0] / moduleVector;
 	MovingVector[1] = MovingVector[1] / moduleVector;
 	
+	//we cheking all agains final pos , because final could be another color
 	_FinalPos[0] = _FinalPos[0] - MovingVector[0];
 	_FinalPos[1] = _FinalPos[1] - MovingVector[1];
 	
 	
-	while ( (_StartPos[0] != _FinalPos[0]) || (_StartPos[1] != _FinalPos[1])) // chesk for horse
+
+	while ( (_StartPos[0] != _FinalPos[0]) || (_StartPos[1] != _FinalPos[1])) 
 		{
 			_StartPos[0] = _StartPos[0] + MovingVector[0];
 			_StartPos[1] = _StartPos[1] + MovingVector[1];
+
+			//getting fractional part of number for checking on horse
 
 			float i;
 			float j;
 			float stxPosl = modf( _StartPos[0], &i);
 			float styPosl = modf(_StartPos[1], &j);
 
+			//if fractional part isnt null (if figure isnt horse) check obstacles
 				if (stxPosl == 0 && styPosl ==0) {
 					if (matrix[int(_StartPos[0])][int(_StartPos[1])]->GetColor() != '_') {
 
