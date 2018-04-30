@@ -14,6 +14,8 @@ Kirill:
 Obstacle; +
 Connverter to possible moves;+
 Players;
+	-conssle gui;
+	-create colored gui;
 Net;
 
 
@@ -21,3 +23,6 @@ Net;
 Stack:
 -------------------------------
 прокерить правильный ли ход,чтоб не менялся игрок когда ход неправильный+
+
+
+

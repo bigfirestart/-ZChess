@@ -6,5 +6,5 @@ public:
 	bool Move(int StartPos[2], int FinalPos[2]) {
 		return true;
 	}
-	Empty() : Primitives('_', '_') {};
+	Empty() : Primitives(' ', ' ') {};
 };

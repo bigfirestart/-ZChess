@@ -5,6 +5,7 @@ void Game::start() {
 
 	Board board;
 	Player isTurnof = white_Player;
+	//HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
 
 	while (true) {
 		if (checkMate(board) == 'n') {
@@ -15,6 +16,7 @@ void Game::start() {
 				cout << "         black player turn" << endl << "----------------------------------" << endl;
 			}
 			board.Show();
+			cout << "---------------------------------" << endl;
 			int n1 = 0;
 			int n2 = 0;
 			char l1 = ' ';
@@ -73,6 +75,7 @@ Game::Game(){
 	black_Player.color = 'b';
 
 }
+
 bool Game::checkCorrectValue(int _n1, int _n2, char *_l1, char *_l2) {
 	if (_n1 > 8 || _n1 < 1 || _n2>8 || _n2 < 1) {
 		return false;

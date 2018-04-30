@@ -7,6 +7,7 @@ public:
 	Primitives* matrix[8][8];
 	
 	void Show();
+	//void Show(HANDLE hConsole);
 	bool Move(char l1, int n1 , char l2, int n2 );
 	Board();
 	~Board();
