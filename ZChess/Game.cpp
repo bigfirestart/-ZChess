@@ -5,12 +5,10 @@
 
 using namespace std;
 void Game::start() {
-	//cout << "alalala";
 
 	Board board;
 
-	int n1, n2;
-	char l1, l2;
+	
 	Player isTurnof = white_Player;
 
 	while (true) {
@@ -21,7 +19,14 @@ void Game::start() {
 			cout << "         black player turn" << endl <<  "----------------------------------" << endl;
 		}
 		board.Show();
-		cin >> l1 >> n1 >> l2 >> n2;
+		int n1 = 0;
+		int n2 = 0;
+		char l1 = ' ';
+		char l2 = ' ';
+		while (checkCorrectValue(n1, n2, &l1, &l2) == false) {
+			cout << "enter figure to move" << endl;
+			cin >> l1 >> n1 >> l2 >> n2;
+		}
 		int xpos = Board::Convert(l1, n1)[0];
 		int ypos = Board::Convert(l1, n1)[1];
 
@@ -34,13 +39,17 @@ void Game::start() {
 			system("cls");
 		}
 		else {
-			board.Move(l1, n1, l2, n2);
+			bool isCorrect =board.Move(l1, n1, l2, n2);
+
+
 			system("cls");
-			if (isTurnof.color == 'w') {
-				isTurnof = black_Player;
-			}
-			else {
-				isTurnof = white_Player;
+			if (isCorrect) {
+				if (isTurnof.color == 'w') {
+					isTurnof = black_Player;
+				}
+				else {
+					isTurnof = white_Player;
+				}
 			}
 		}
 
@@ -51,5 +60,21 @@ Game::Game(){
 	black_Player.controlBy = "player";
 	white_Player.color = 'w';
 	black_Player.color = 'b';
+
+}
+bool Game::checkCorrectValue(int _n1, int _n2, char *_l1, char *_l2) {
+	if (_n1 > 8 || _n1 < 1 || _n2>8 || _n2 < 1) {
+		return false;
+	}
+	//converting lower to upper for letters
+	//ia ito sdelay (navernoe)
+	if (false) {
+
+	}
+	else {
+		return true;
+	}
+	
+
 
 }
