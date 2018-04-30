@@ -12,9 +12,4 @@ public:
 	Game();
 	Player black_Player;
 	Player white_Player;
-
-	
-
-
-
 };

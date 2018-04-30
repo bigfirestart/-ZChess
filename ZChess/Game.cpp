@@ -24,7 +24,7 @@ void Game::start() {
 		char l1 = ' ';
 		char l2 = ' ';
 		while (checkCorrectValue(n1, n2, &l1, &l2) == false) {
-			cout << "enter figure to move" << endl;
+			cout << "Enter figure to move" << endl;
 			cin >> l1 >> n1 >> l2 >> n2;
 		}
 		int xpos = Board::Convert(l1, n1)[0];
@@ -67,7 +67,7 @@ bool Game::checkCorrectValue(int _n1, int _n2, char *_l1, char *_l2) {
 		return false;
 	}
 	//converting lower to upper for letters
-	//ia ito sdelay (navernoe)
+	//ia eto sdelay (navernoe)
 	if (false) {
 
 	}
