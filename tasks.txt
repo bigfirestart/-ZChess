@@ -11,7 +11,7 @@ Neiron Net;
 Kirill:
 --------------------------------
 
-Obstacle;
+Obstacle; +
 Connverter to possible moves;
 Players;
 Net;
