@@ -30,26 +30,29 @@ void Game::start() {
 
 			Primitives *thisFigure;
 			thisFigure = board.matrix[xpos][ypos];
-			char color = thisFigure->GetColor();
-			if (color != isTurnof.color) {
-				cout << "its not your turn" << endl;
-				system("pause");
-				system("cls");
-			}
-			else {
-				bool isCorrect = board.Move(l1, n1, l2, n2);
+			if (thisFigure != nullptr) {
+				char color = thisFigure->GetColor();
 
-
-				system("cls");
-				if (isCorrect) {
-					if (isTurnof.color == 'w') {
-						isTurnof = black_Player;
-					}
-					else {
-						isTurnof = white_Player;
-					}
+				if (color != isTurnof.color) {
+					cout << "its not your turn" << endl;
+					system("pause");
+					system("cls");
 				}
+				else {
+					bool isCorrect = board.Move(l1, n1, l2, n2);
 
+
+					system("cls");
+					if (isCorrect) {
+						if (isTurnof.color == 'w') {
+							isTurnof = black_Player;
+						}
+						else {
+							isTurnof = white_Player;
+						}
+					}
+
+				}
 			}
 		}
 		else {
@@ -103,12 +106,14 @@ char Game::checkMate(Board _board) {
 	for (int i = 0; i < 8; i++)
 	{
 		for (int j = 0; j < 8; j++) {
-			if (_board.matrix[i][j]->GetName() == 'k') {
-				if (_board.matrix[i][j]->GetColor() == 'w') {
-					whiteKingAlive = true;
-				}
-				else {
-					blackKingAlive = true;
+			if (_board.matrix[i][j] != nullptr) {
+				if (_board.matrix[i][j]->GetName() == 'k') {
+					if (_board.matrix[i][j]->GetColor() == 'w') {
+						whiteKingAlive = true;
+					}
+					else {
+						blackKingAlive = true;
+					}
 				}
 			}
 		}

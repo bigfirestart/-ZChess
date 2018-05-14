@@ -12,13 +12,12 @@ Board::~Board()
 //Add figures for board
 
 void Board::Fill() {
-	Primitives* empty = new Empty;
 
 	//Filling empty
 	for (int i = 0; i < 8; i++) {
 		for (int j = 0; j < 8; j++)
 		{
-			matrix[j][i] = empty;
+			matrix[j][i] = nullptr;
 		}
 		
 	}
@@ -68,8 +67,13 @@ void Board::Show() {
 	{
 		cout << 8 - i << " ";
 		for (int j = 0; j < 8; j++)
-		{
-			cout << matrix[i][j]->GetName() << "(" << matrix[i][j]->GetColor() << ")";
+		{	
+			if (matrix[i][j] != nullptr) {
+				cout << matrix[i][j]->GetName() << "(" << matrix[i][j]->GetColor() << ")";
+			}
+			else {
+				cout << "_(_)";
+			}
 		}
 		cout << endl;
 	}
@@ -211,38 +215,52 @@ bool Board::Move(char l1, int n1, char l2, int n2) {
 	FinalPos[0] = Board::Convert(l2, n2)[0];
 	FinalPos[1] = Board::Convert(l2, n2)[1];
 
-
-
-	Primitives* empty = new Empty;
-
-	char colorStart = matrix[FinalPos[0]][FinalPos[1]]->GetColor();
-	char colorFinal = matrix[StartPos[0]][StartPos[1]]->GetColor();
+	char colorStart;
+	char colorFinal;
+	if (matrix[FinalPos[0]][FinalPos[1]] != nullptr) {
+		colorFinal = matrix[FinalPos[0]][FinalPos[1]]->GetColor();
+		
+	}
+	else {
+		colorFinal = '_';
+		
+	}
+	if (matrix[StartPos[0]][StartPos[1]] != nullptr) {
+		colorStart = matrix[StartPos[0]][StartPos[1]]->GetColor();
+	}
+	else {
+		colorStart = '_';
+	}
 
 
 
 	if (colorStart != colorFinal) {
-		if (! AnyObstacle(StartPos, FinalPos)) {
-			if (matrix[StartPos[0]][StartPos[1]]->GetName() == 'p')
-			{
-				if (abs(FinalPos[1] - StartPos[1]) != 0 && matrix[FinalPos[0]][FinalPos[1]]->GetName() != '_' 
-					&& matrix[StartPos[0]][StartPos[1]]->Move(StartPos, FinalPos)) {
+		if (matrix[StartPos[0]][StartPos[1]] != nullptr) {
+			if (!AnyObstacle(StartPos, FinalPos)) {
+				if (matrix[StartPos[0]][StartPos[1]]->GetName() == 'p')
+				{
+					//eat
+					if (abs(FinalPos[1] - StartPos[1]) != 0 && matrix[FinalPos[0]][FinalPos[1]] == nullptr
+						&& matrix[StartPos[0]][StartPos[1]]->Move(StartPos, FinalPos)) {
+						result = true;
+						matrix[FinalPos[0]][FinalPos[1]] = matrix[StartPos[0]][StartPos[1]];
+						matrix[StartPos[0]][StartPos[1]] = nullptr;
+					}
+
+					else if (abs(FinalPos[1] - StartPos[1]) == 0  && matrix[FinalPos[0]][FinalPos[1]] == nullptr
+						&& matrix[StartPos[0]][StartPos[1]]->Move(StartPos, FinalPos)) {
+						result = true;
+						matrix[FinalPos[0]][FinalPos[1]] = matrix[StartPos[0]][StartPos[1]];
+						matrix[StartPos[0]][StartPos[1]] = nullptr;
+					}
+				}
+				else if (matrix[StartPos[0]][StartPos[1]]->Move(StartPos, FinalPos)) {
 					result = true;
 					matrix[FinalPos[0]][FinalPos[1]] = matrix[StartPos[0]][StartPos[1]];
-					matrix[StartPos[0]][StartPos[1]] = empty;
-				}
-				else if (abs(FinalPos[1] - StartPos[1]) == 0 && matrix[FinalPos[0]][FinalPos[1]]->GetName() == '_'
-					&& matrix[StartPos[0]][StartPos[1]]->Move(StartPos, FinalPos)) {
-					result = true;
-					matrix[FinalPos[0]][FinalPos[1]] = matrix[StartPos[0]][StartPos[1]];
-					matrix[StartPos[0]][StartPos[1]] = empty;
+					matrix[StartPos[0]][StartPos[1]] = nullptr;
 				}
 			}
-			else if (matrix[StartPos[0]][StartPos[1]]->Move(StartPos, FinalPos)) {
-				result = true;
-				matrix[FinalPos[0]][FinalPos[1]] = matrix[StartPos[0]][StartPos[1]];
-				matrix[StartPos[0]][StartPos[1]] = empty;
-			}
-	}
+		}
 	}
 
 
@@ -293,8 +311,9 @@ bool Board::AnyObstacle(int StartPos[2], int FinalPos[2]) {
 			float styPosl = modf(_StartPos[1], &j);
 
 			//if fractional part isnt null (if figure isnt horse) check obstacles
+				
 				if (stxPosl == 0 && styPosl ==0) {
-					if (matrix[int(_StartPos[0])][int(_StartPos[1])]->GetColor() != '_') {
+					if (matrix[int(_StartPos[0])][int(_StartPos[1])] != nullptr) {
 
 						return true;
 					}

@@ -9,7 +9,6 @@
 //Figures
 #include "Primitives.h"
 #include "Pawn.h"
-#include "Empty.h"
 #include "King.h"
 #include "Bishop.h"
 #include "Horse.h"

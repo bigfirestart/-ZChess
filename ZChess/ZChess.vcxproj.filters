@@ -38,9 +38,6 @@
     <ClInclude Include="King.h">
       <Filter>Исходные файлы\Figures</Filter>
     </ClInclude>
-    <ClInclude Include="Empty.h">
-      <Filter>Исходные файлы\Figures</Filter>
-    </ClInclude>
     <ClInclude Include="Board.h">
       <Filter>Исходные файлы\Board</Filter>
     </ClInclude>

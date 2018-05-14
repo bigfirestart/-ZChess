@@ -1,7 +1,6 @@
 #pragma once
 #include "Primitives.h"
 #include "Board.h"
-#include "Empty.h"
 
 
 class Pawn : public Primitives {
