@@ -240,7 +240,7 @@ bool Board::Move(char l1, int n1, char l2, int n2) {
 				if (matrix[StartPos[0]][StartPos[1]]->GetName() == 'p')
 				{
 					//eat
-					if (abs(FinalPos[1] - StartPos[1]) != 0 && matrix[FinalPos[0]][FinalPos[1]] == nullptr
+					if (abs(FinalPos[1] - StartPos[1]) != 0 && matrix[FinalPos[0]][FinalPos[1]] != nullptr
 						&& matrix[StartPos[0]][StartPos[1]]->Move(StartPos, FinalPos)) {
 						result = true;
 						matrix[FinalPos[0]][FinalPos[1]] = matrix[StartPos[0]][StartPos[1]];
