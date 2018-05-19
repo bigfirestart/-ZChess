@@ -22,6 +22,9 @@
     <Filter Include="Исходные файлы\Game">
       <UniqueIdentifier>{0ac75967-798c-4af5-bdb8-b2d94ca744c5}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Исходные файлы\GUI">
+      <UniqueIdentifier>{83f1d1ea-cb77-4397-8e64-4f851bf7da1f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Image Include="Icon.ico">
@@ -61,6 +64,12 @@
     </ClInclude>
     <ClInclude Include="includes.h">
       <Filter>Исходные файлы</Filter>
+    </ClInclude>
+    <ClInclude Include="Painter.h">
+      <Filter>Исходные файлы\GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="ConsoleGUI.h">
+      <Filter>Исходные файлы\GUI</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

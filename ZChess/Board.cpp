@@ -80,49 +80,7 @@ void Board::Show() {
 	cout << endl;
 }
 
-//void Board::Show(HANDLE hConsole) {
-//	int fieldBacground = LightGray;
-//	int figureColor = Black;
-//	cout << "   A " << " B  " << " C  " << " D  " << " E  " << " F  " << " G  " << " H   ";
-//
-//	cout << endl;
-//	for (int i = 0; i < 8; i++)
-//	{
-//		cout << 8 - i << " ";
-//
-//		for (int j = 0; j < 8; j++)
-//		{
-//			if (matrix[i][j]->GetColor() == 'w') {
-//				figureColor = White;
-//			}
-//			if (matrix[i][j]->GetColor() == 'b') {
-//				figureColor = Black;
-//			}
-//			SetConsoleTextAttribute(hConsole, (WORD)((fieldBacground << 4) | figureColor));
-//			cout << "   ";
-//			cout << " " << matrix[i][j]->GetName() << " ";
-//			cout << "   ";
-//			if (fieldBacground == Green) {
-//				fieldBacground = LightGray;
-//			}
-//			else {
-//				fieldBacground = Green;
-//			}
-//		}
-//		cout << endl;
-//		if (fieldBacground == Green) {
-//			fieldBacground = LightGray;
-//		}
-//		else {
-//			fieldBacground = Green;
-//		}
-//
-//		
-//		SetConsoleTextAttribute(hConsole, (WORD)((White<< 4) | Blue));
-//
-//	}
-//	cout << endl;
-//}
+
 
 //Convert to char -> int
 int* Board::Convert(char l, int n) {

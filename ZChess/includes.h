@@ -4,6 +4,8 @@
 #include <cmath>
 #include "Game.h"
 #include <Windows.h>
+#include "Painter.h"
+#include "ConsoleGUI.h"
 
 
 //Figures

@@ -124,10 +124,12 @@
   <ItemGroup>
     <ClInclude Include="Bishop.h" />
     <ClInclude Include="Board.h" />
+    <ClInclude Include="ConsoleGUI.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="Horse.h" />
     <ClInclude Include="includes.h" />
     <ClInclude Include="King.h" />
+    <ClInclude Include="Painter.h" />
     <ClInclude Include="Pawn.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="Primitives.h" />

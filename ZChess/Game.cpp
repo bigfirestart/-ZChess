@@ -5,24 +5,23 @@ void Game::start() {
 
 	Board board;
 	Player isTurnof = white_Player;
+	Painter* GUI = new ConsoleGUI();
 	//HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
 
 	while (true) {
 		if (checkMate(board) == 'n') {
-			if (isTurnof.color == 'w') {
-				cout << "         white player turn" << endl << "---------------------------------" << endl;
-			}
-			else {
-				cout << "         black player turn" << endl << "----------------------------------" << endl;
-			}
-			board.Show();
-			cout << "---------------------------------" << endl;
+
+			GUI->showTurn(isTurnof.GetColor());
+			GUI->Show(&board);
+			GUI->showCommand("---------------------------------");
+
 			int n1 = 0;
 			int n2 = 0;
 			char l1 = ' ';
 			char l2 = ' ';
 			while (checkCorrectValue(n1, n2, &l1, &l2) == false) {
-				cout << "Enter figure to move" << endl;
+
+				GUI->showCommand("Enter figure to move");
 				cin >> l1 >> n1 >> l2 >> n2;
 			}
 			int xpos = Board::Convert(l1, n1)[0];
@@ -34,7 +33,7 @@ void Game::start() {
 				char color = thisFigure->GetColor();
 
 				if (color != isTurnof.color) {
-					cout << "its not your turn" << endl;
+					GUI->showCommand("its not your turn");
 					system("pause");
 					system("cls");
 				}
